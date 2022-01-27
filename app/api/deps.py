@@ -6,7 +6,7 @@ from sqlalchemy.orm.session import Session
 from app.core.auth import oauth2_scheme
 from app.core.config import settings
 from app.db.session import SessionLocal
-from app.models.user import User
+from app.schemas import Author
 
 
 class TokenData(BaseModel):
@@ -23,7 +23,7 @@ def get_db() -> Generator:
         db.close()
 
 
-async def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)) -> User:
+async def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)) -> Author:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -41,7 +41,7 @@ async def get_current_user(db: Session = Depends(get_db), token: str = Depends(o
     except JWTError:
         raise credentials_exception
 
-    user = db.query(User).filter(User.id == token_data.username).first()
+    user = db.query(Author).filter(Author.username == token_data.username).first()
 
     if user is None:
         raise credentials_exception

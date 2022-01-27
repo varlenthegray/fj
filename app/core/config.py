@@ -23,9 +23,10 @@ class Settings(BaseSettings):
             return v
         raise ValueError(v)
 
-    SQLALCHEMY_DATABASE_URI: Optional[str] = "sqlite:///example.db"
-    FIRST_SUPERUSER: EmailStr = "admin@recipeapi.com"
-    FIRST_SUPERUSER_PW: str = "CHANGEME"
+    SQLALCHEMY_DATABASE_URI: Optional[str] = "sqlite:///database.db"
+    FIRST_SUPERUSER: str = "bbeach"
+    FIRST_SUPERUSER_PW: str = "Yellow"  # todo: remove this and pull it from a .env file or something
+    FIRST_SUPERUSER_EMAIL: EmailStr = "bbeach@innovated.tech"
 
     class Config:
         case_sensitive = True

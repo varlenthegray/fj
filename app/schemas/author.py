@@ -18,6 +18,12 @@ class AuthorCreateModerator(AuthorBase):
     password: str
 
 
+class AuthorCreateAdmin(AuthorBase):
+    admin: bool = True
+    email_address: str
+    password: str
+
+
 class AuthorUpdate(AuthorBase):
     ...
 
