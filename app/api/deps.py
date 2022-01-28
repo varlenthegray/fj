@@ -6,11 +6,11 @@ from sqlalchemy.orm.session import Session
 from app.core.auth import oauth2_scheme
 from app.core.config import settings
 from app.db.session import SessionLocal
-from app.schemas import Author
+from app.models.author import Author
 
 
 class TokenData(BaseModel):
-    username: Optional[str] = None
+    id: Optional[int] = None
 
 
 def get_db() -> Generator:
@@ -32,16 +32,16 @@ async def get_current_user(db: Session = Depends(get_db), token: str = Depends(o
 
     try:
         payload = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.ALGORITHM], options={"verify_aud": False})
-        username: str = payload.get("sub")
+        author_id: int = payload.get("sub")
 
-        if username is None:
+        if author_id is None:
             raise credentials_exception
 
-        token_data = TokenData(username=username)
+        token_data = TokenData(id=author_id)
     except JWTError:
         raise credentials_exception
 
-    user = db.query(Author).filter(Author.username == token_data.username).first()
+    user = db.query(Author).filter(Author.id == token_data.id).first()
 
     if user is None:
         raise credentials_exception

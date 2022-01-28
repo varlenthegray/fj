@@ -18,16 +18,7 @@ def root(request: Request, db: Session = Depends(deps.get_db)) -> dict:
     """
     Root GET
     """
-    response = crud.recipe.get_multi(db=db, limit=10)
-    return response
-
-
-@app.middleware("http")
-async def add_process_time_header(request: Request, call_next):
-    start_time = time.time()
-    response = await call_next(request)
-    process_time = time.time() - start_time
-    response.headers["X-Process-Time"] = str(process_time)
+    response = {"message": "You have successfully connected."}
     return response
 
 
