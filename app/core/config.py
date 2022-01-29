@@ -15,15 +15,10 @@ class Settings(BaseSettings):
     # "http://localhost:8080", "http://local.dockertoolbox.tiangolo.com"]'
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ['http://localhost:3000', 'http://127.0.0.1:3000']
 
-    @validator("BACKEND_CORS_ORIGINS", pre=True)
-    def assemble_cors_origins(cls, v: Union[str, List[str]]) -> Union[List[str], str]:
-        if isinstance(v, str) and not v.startswith("["):
-            return [i.strip() for i in v.split(",")]
-        elif isinstance(v, (list, str)):
-            return v
-        raise ValueError(v)
-
+    # SQLAlchemy database setup
     SQLALCHEMY_DATABASE_URI: Optional[str] = "sqlite:///database.db"
+
+    # First (admin) superuser
     FIRST_SUPERUSER: str = "bbeach"
     FIRST_SUPERUSER_PW: str = "Yellow"  # todo: remove this and pull it from a .env file or something
     FIRST_SUPERUSER_EMAIL: EmailStr = "bbeach@innovated.tech"

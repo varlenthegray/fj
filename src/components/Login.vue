@@ -1,10 +1,12 @@
 <template>
   <div class="container">
-    <Form>
+    <h1 class="title is-1">Login to Play</h1>
+
+    <Form :validation-schema="schema" method="post" @submit="handleLogin">
       <div class="field">
         <label class="label">Username</label>
         <div class="control has-icons-left">
-          <Field name="username" :rules="isRequired" class="input" placeholder="Username" />
+          <Field name="username" class="input" placeholder="Username" />
           <span class="icon is-small is-left"><font-awesome-icon icon="user" /></span>
         </div>
 
@@ -14,7 +16,7 @@
       <div class="field">
         <label class="label">Password</label>
         <div class="control has-icons-left">
-          <Field name="password" type="password" :rules="isRequired" class="input" placeholder="Password" />
+          <Field name="password" type="password" class="input" placeholder="Password" />
           <span class="icon is-small is-left"><font-awesome-icon icon="lock" /></span>
         </div>
 
@@ -23,7 +25,7 @@
 
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-link" type="submit">Submit</button>
+          <button class="button is-link" type="submit">Log In</button>
         </div>
         <div class="control">
           <button class="button is-link is-light" type="button" @click="$router.push('/register')">Register</button>
@@ -37,20 +39,51 @@
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import * as yup from "yup";
+import axios from "axios";
 
 library.add(faUser, faLock);
 
 export default {
   components: { Field, Form, ErrorMessage },
-  methods: {
-    isRequired(value) {
-      if(value && value.trim()) {
-        return true;
-      }
+  data() {
+    const schema = yup.object({
+      username: yup.string()
+          .required('Please enter your username.')
+          .min(3, 'Username must be at least 3 characters long'),
+      password: yup.string()
+          .required('Please enter your password.')
+          .min(3, 'Password must be at least 3 characters long.')
+    })
 
-      return 'This field is required.';
+    return {
+      schema
     }
-  }
+  },
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    },
+  },
+  created() {
+    if(this.loggedIn) {
+      this.$router.push("/home");
+    }
+  },
+  methods: {
+    handleLogin() {
+      this.$store.dispatch("auth/login", this.form).then(
+          () => { this.$router.push("/home") },
+          (error) => {
+            this.message = (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+          }
+      );
+    },
+  },
 }
 </script>
 
