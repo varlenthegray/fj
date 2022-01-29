@@ -11,12 +11,6 @@ from app.models.author import Author
 router = APIRouter()
 
 
-@router.post("/login_temp", summary="A temporary login method")
-def loginTemp(db: Session = Depends(deps.get_db), form_data: schemas.author.AuthorBase = Depends()):
-    print(form_data)
-    return form_data
-
-
 @router.post("/login", summary="Log in")
 def login(db: Session = Depends(deps.get_db), form_data: OAuth2PasswordRequestForm = Depends()) -> Any:
     """
