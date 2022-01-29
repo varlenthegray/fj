@@ -5,7 +5,7 @@ const API_URL = 'http://localhost:8000/api/v1/author/';
 class AuthService {
   login(user) {
     return axios
-      .post(API_URL + 'login', user)
+      .post(API_URL + 'login', new URLSearchParams(user))
       .then(response => {
         if(response.data.accessToken) {
           localStorage.setItem('user', JSON.stringify(response.data));

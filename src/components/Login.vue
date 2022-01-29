@@ -6,7 +6,7 @@
       <div class="field">
         <label class="label">Username</label>
         <div class="control has-icons-left">
-          <Field name="username" class="input" placeholder="Username" />
+          <Field name="username" class="input" placeholder="Username" v-model="form.username" />
           <span class="icon is-small is-left"><font-awesome-icon icon="user" /></span>
         </div>
 
@@ -16,7 +16,7 @@
       <div class="field">
         <label class="label">Password</label>
         <div class="control has-icons-left">
-          <Field name="password" type="password" class="input" placeholder="Password" />
+          <Field name="password" type="password" class="input" placeholder="Password" v-model="form.password" />
           <span class="icon is-small is-left"><font-awesome-icon icon="lock" /></span>
         </div>
 
@@ -40,7 +40,6 @@ import { Field, Form, ErrorMessage } from 'vee-validate';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import * as yup from "yup";
-import axios from "axios";
 
 library.add(faUser, faLock);
 
@@ -57,7 +56,11 @@ export default {
     })
 
     return {
-      schema
+      schema,
+      form: {
+        username: '',
+        password: ''
+      }
     }
   },
   computed: {
@@ -75,11 +78,8 @@ export default {
       this.$store.dispatch("auth/login", this.form).then(
           () => { this.$router.push("/home") },
           (error) => {
-            this.message = (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                error.message ||
-                error.toString();
+            this.message = (error.response && error.response.data && error.response.data.message) || error.message
+                || error.toString();
           }
       );
     },
