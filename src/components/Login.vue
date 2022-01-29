@@ -6,7 +6,7 @@
       <div class="field">
         <label class="label">Username</label>
         <div class="control has-icons-left">
-          <Field name="username" class="input" placeholder="Username" v-model="form.username" />
+          <Field name="username" class="input" placeholder="Username" />
           <span class="icon is-small is-left"><font-awesome-icon icon="user" /></span>
         </div>
 
@@ -16,7 +16,7 @@
       <div class="field">
         <label class="label">Password</label>
         <div class="control has-icons-left">
-          <Field name="password" type="password" class="input" placeholder="Password" v-model="form.password" />
+          <Field name="password" type="password" class="input" placeholder="Password" />
           <span class="icon is-small is-left"><font-awesome-icon icon="lock" /></span>
         </div>
 
@@ -55,13 +55,7 @@ export default {
           .min(3, 'Password must be at least 3 characters long.')
     })
 
-    return {
-      schema,
-      form: {
-        username: '',
-        password: ''
-      }
-    }
+    return { schema }
   },
   computed: {
     loggedIn() {
@@ -74,14 +68,15 @@ export default {
     }
   },
   methods: {
-    handleLogin() {
-      this.$store.dispatch("auth/login", this.form).then(
-          () => { this.$router.push("/home") },
-          (error) => {
-            this.message = (error.response && error.response.data && error.response.data.message) || error.message
-                || error.toString();
-          }
-      );
+    handleLogin(user) {
+      this.$store.dispatch("auth/login", user)
+          .then(
+              () => { this.$router.push("/home") },
+              (error) => {
+                this.message = (error.response && error.response.data && error.response.data.message) || error.message
+                    || error.toString();
+              }
+          );
     },
   },
 }

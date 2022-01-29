@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="title is-1">Register an Account</h1>
 
-    <Form :validation-schema="schema">
+    <Form :validation-schema="schema" method="post" @submit="handleRegister">
       <div class="field">
         <label class="label">Username</label>
         <div class="control has-icons-left">
@@ -83,6 +83,23 @@ export default {
 
     return { schema }
   },
+  methods: {
+    handleRegister(user) {
+      this.$store.dispatch("auth/register", user)
+          .then(
+              () => { this.$router.push("/")},
+              (error) => {
+                this.message = (error.response && error.response.data && error.response.data.message) || error.message
+                    || error.toString();
+              }
+          )
+    }
+  },
+  created() {
+    if(this.loggedIn) {
+      this.$router.push("/home");
+    }
+  }
 }
 </script>
 

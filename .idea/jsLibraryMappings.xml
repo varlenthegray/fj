@@ -3,5 +3,6 @@
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{fj/node_modules}" />
     <file url="PROJECT" libraries="{bulma, fj/node_modules, vue, vue-router}" />
+    <includedPredefinedLibrary name="HTTP Response Handler" />
   </component>
 </project>
