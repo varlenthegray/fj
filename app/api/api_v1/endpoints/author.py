@@ -13,9 +13,7 @@ router = APIRouter()
 
 @router.post("/login", summary="Log in")
 def login(db: Session = Depends(deps.get_db), form_data: OAuth2PasswordRequestForm = Depends()) -> Any:
-    """
-    Get the JWT for a user with data from OAuth2 request form body.
-    """
+    """ Get the JWT for a user with data from OAuth2 request form body. """
 
     user = authenticate(username=form_data.username, password=form_data.password, db=db)
 
@@ -27,9 +25,7 @@ def login(db: Session = Depends(deps.get_db), form_data: OAuth2PasswordRequestFo
 
 @router.get("/me", response_model=schemas.Author, summary="Get current user")
 def read_users_me(current_user: Author = Depends(deps.get_current_user)):
-    """
-    Fetch the current logged in user.
-    """
+    """ Fetch the current logged in user. """
 
     user = current_user
 
@@ -38,9 +34,9 @@ def read_users_me(current_user: Author = Depends(deps.get_current_user)):
 
 @router.post("/signup", response_model=schemas.Author, status_code=201, summary="Sign up for a new account")
 def create_user_signup(*, db: Session = Depends(deps.get_db), user_in: schemas.author.AuthorCreate) -> Any:
-    """
-    Create new user without the need to be logged in.
-    """
+    """ Create new user without the need to be logged in. """
+
+    print(user_in)
 
     user = db.query(Author).filter(Author.username == user_in.username).first()
 
@@ -59,9 +55,7 @@ def create_moderator(
         current_user: Author = Depends(deps.get_current_user),
         user_in: schemas.author.AuthorCreateModerator
 ) -> Any:
-    """
-    Create a moderator when a superuser is logged in. This is called from an administrator account.
-    """
+    """ Create a moderator when a superuser is logged in. This is called from an administrator account. """
 
     user = db.query(Author).filter(Author.username == user_in.username).first()
 
