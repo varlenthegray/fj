@@ -89,7 +89,7 @@ export default {
       this.$store.dispatch("auth/register", user)
           .then(
               () => {
-                this.useMessage().success("Successfully registered.");
+                useMessage().success("Successfully registered.");
                 this.$router.push("/");
               }, (error) => {
                 this.message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
