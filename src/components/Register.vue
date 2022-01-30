@@ -59,6 +59,7 @@
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { useMessage } from 'naive-ui';
 import * as yup from 'yup';
 
 library.add(faUser, faEnvelope, faLock);
@@ -87,10 +88,11 @@ export default {
     handleRegister(user) {
       this.$store.dispatch("auth/register", user)
           .then(
-              () => { this.$router.push("/")},
-              (error) => {
-                this.message = (error.response && error.response.data && error.response.data.message) || error.message
-                    || error.toString();
+              () => {
+                this.useMessage().success("Successfully registered.");
+                this.$router.push("/");
+              }, (error) => {
+                this.message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
               }
           )
     }
