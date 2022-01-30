@@ -84,12 +84,15 @@ export default {
 
     return { schema }
   },
+  setup() {
+    window.$message = useMessage();
+  },
   methods: {
     handleRegister(user) {
       this.$store.dispatch("auth/register", user)
           .then(
               () => {
-                useMessage().success("Successfully registered.");
+                window.$message.success("Successfully registered.");
                 this.$router.push("/");
               }, (error) => {
                 this.message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();

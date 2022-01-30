@@ -40,6 +40,7 @@ import { Field, Form, ErrorMessage } from 'vee-validate';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import * as yup from "yup";
+import { useMessage } from "naive-ui";
 
 library.add(faUser, faLock);
 
@@ -67,14 +68,19 @@ export default {
       this.$router.push("/home");
     }
   },
+  setup() {
+    window.$message = useMessage();
+  },
   methods: {
     handleLogin(user) {
       this.$store.dispatch("auth/login", user)
           .then(
-              () => { this.$router.push("/home") },
+              () => {
+                window.$message.success('Logged in successfully.');
+                this.$router.push("/home");
+              },
               (error) => {
-                this.message = (error.response && error.response.data && error.response.data.message) || error.message
-                    || error.toString();
+                window.$message.error('Unable to log in, please try again.');
               }
           );
     },
