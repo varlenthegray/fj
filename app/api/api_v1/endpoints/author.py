@@ -20,7 +20,9 @@ def login(db: Session = Depends(deps.get_db), form_data: OAuth2PasswordRequestFo
     if not user:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
 
-    return {"access_token": create_access_token(sub=str(user.id)), "token_type": "bearer"}
+    user_return = {"username": user.username, "pen_name": user.pen_name}
+
+    return {"access_token": create_access_token(sub=str(user.id)), "token_type": "bearer", "author": user_return}
 
 
 @router.get("/me", response_model=schemas.Author, summary="Get current user")

@@ -68,9 +68,7 @@ export default {
       this.$router.push("/home");
     }
   },
-  setup() {
-    window.$message = useMessage();
-  },
+  setup() { window.$message = useMessage() },
   methods: {
     handleLogin(user) {
       this.$store.dispatch("auth/login", user)

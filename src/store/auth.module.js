@@ -1,38 +1,48 @@
-import AuthService from '../services/auth.service';
+import axios from "axios";
+import Config from "../config";
 
-const user = JSON.parse(localStorage.getItem('user'));
+const user = JSON.parse(localStorage.getItem('login'));
 const initialState = user ? { status: { loggedIn: true }, user } : { status: { loggedIn: false }, user: null };
+const API_URL = Config.API_URL;
 
 export const auth = {
   namespaced: true,
   state: initialState,
   actions: {
     login({ commit }, user) {
-      return AuthService.login(user).then(
-        user => {
-          commit('loginSuccess', user);
-          return Promise.resolve(user);
-        },
-        error => {
-          commit('loginFailure');
-          return Promise.reject(error);
-        }
-      );
+      return axios({ method: 'POST', url: `${API_URL}/author/login`, data: new URLSearchParams(user)})
+          .then(
+              user => {
+                const userData = user.data;
+                localStorage.setItem('login', JSON.stringify(userData));
+                commit('loginSuccess', userData);
+
+                return Promise.resolve(user);
+              },
+              error => {
+                commit('loginFailure');
+                return Promise.reject(error);
+              }
+          );
     },
     logout({ commit }) {
-      AuthService.logout();
+      localStorage.clear();
       commit('logout');
     },
     register({ commit }, user) {
-      return AuthService.register(user).then(
-        response => {
-          commit('registerSuccess');
-          return Promise.resolve(response.data);
-        },
-        error => {
-          commit('registerFailure');
-          return Promise.reject(error);
-        }
+      return axios({
+        method: 'POST',
+        url: `${API_URL}/author/signup`,
+        data: user
+      }).then(
+          response => {
+            commit('registerSuccess');
+            return Promise.resolve(response.data);
+          },
+          error => {
+            commit('registerFailure');
+            return Promise.reject(error);
+          }
       );
     }
   },

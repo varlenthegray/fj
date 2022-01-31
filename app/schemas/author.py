@@ -30,6 +30,7 @@ class AuthorUpdate(AuthorBase):
 
 class AuthorInDBBase(AuthorBase):
     id: Optional[int] = None
+    pen_name: Optional[str] = None
 
     class Config:
         orm_mode = True

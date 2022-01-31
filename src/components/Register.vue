@@ -84,9 +84,7 @@ export default {
 
     return { schema }
   },
-  setup() {
-    window.$message = useMessage();
-  },
+  setup() { window.$message = useMessage() },
   methods: {
     handleRegister(user) {
       this.$store.dispatch("auth/register", user)
