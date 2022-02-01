@@ -117,7 +117,7 @@
 
       <div class="column">
         <div class="block">
-          <component :is="actionCenter" />
+          <component :is="actionCenter" @log-out="logOut" />
         </div>
 
         <div class="block">
@@ -160,14 +160,6 @@ export default {
     actionCenter() {
       return Welcome
     },
-    logOut() {
-      this.$store.dispatch("auth/logout")
-          .then(
-              () => {
-                window.$message.info('Logged out successfully.');
-                this.$router.push("/");
-              })
-    },
   },
   created() {
     if(!this.loggedIn) {
@@ -176,6 +168,16 @@ export default {
   },
   components: {
     Welcome
+  },
+  methods: {
+    logOut() {
+      this.$store.dispatch("auth/logout")
+          .then(
+              () => {
+                window.$message.info('Logged out successfully.');
+                this.$router.push("/");
+              })
+    },
   }
 }
 </script>
