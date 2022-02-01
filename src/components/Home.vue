@@ -6,9 +6,22 @@
       </div>
 
       <div class="column has-text-right">
-        <button class="button is-white">
-          <span class="icon"><font-awesome-icon icon="user-cog" /></span>
-        </button>
+        <div class="dropdown is-right is-hoverable">
+          <div class="dropdown-trigger">
+            <button class="button is-white" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span class="icon"><font-awesome-icon icon="user-cog" /></span>
+            </button>
+          </div>
+
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content has-text-left">
+              <a @click="" class="dropdown-item">Profile</a>
+              <a @click="" class="dropdown-item">Statistics</a>
+              <hr class="dropdown-divider">
+              <a @click="logOut" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -104,25 +117,7 @@
 
       <div class="column">
         <div class="block">
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">Welcome aboard!</p>
-              <div class="card-header-icon"><span class="icon"><font-awesome-icon icon="user-tie" /></span></div>
-            </header>
-
-            <div class="card-content">
-              <div class="content">
-                Welcome! You've decided to give writing a shot eh? Well, here at Faded Journals our job is to introduce you
-                to the subject (pun intended). First up is an introduction on how to interact with the system. Click "Continue"
-                to progress to the next step.
-              </div>
-            </div>
-
-            <footer class="card-footer">
-              <a href="#" class="card-footer-item">Continue</a>
-              <a href="#" class="card-footer-item">Logout</a>
-            </footer>
-          </div>
+          <component :is="actionCenter" />
         </div>
 
         <div class="block">
@@ -138,6 +133,7 @@
 <script>
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserTie, faUserCog } from "@fortawesome/free-solid-svg-icons";
+import Welcome from "./tutorial/Welcome.vue";
 
 library.add(faUserTie, faUserCog);
 
@@ -161,12 +157,26 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+    actionCenter() {
+      return Welcome
+    },
+    logOut() {
+      this.$store.dispatch("auth/logout")
+          .then(
+              () => {
+                window.$message.info('Logged out successfully.');
+                this.$router.push("/");
+              })
+    },
   },
   created() {
     if(!this.loggedIn) {
       this.$router.push("/");
     }
   },
+  components: {
+    Welcome
+  }
 }
 </script>
 

@@ -1,0 +1,12 @@
+{
+  "1": {
+    "title": "Welcome aboard!",
+    "content": "Welcome! You've decided to give writing a shot eh? Well, here at Faded Journals our job is to introduce you  to the subject (pun intended). First up is an introduction on how to interact with the system. Click \"Continue\" to progress to the next step.",
+    "buttons": "<a href='#' class='card-footer-item'>Continue</a> <a @click='logOut' class='card-footer-item'>Logout</a>"
+  },
+  "2": {
+    "title": "Getting Going...",
+    "content": "Excellent. You seem to understand the basics of how to interact with me. My name is Morgan. Next, you're going to define a pen name. This must be unique (to the game), no special characters, and ",
+    "buttons": "<a href='#' class='card-footer-item'>Continue</a> <a @click='logOut' class='card-footer-item'>Logout</a>"
+  }
+}
