@@ -9,9 +9,9 @@
 
     <div class="card-content">
       <div class="content">
-        Excellent. You seem to understand the basics of how to interact with me. Next, you're going to create a pen name.
-        This must be unique (to the game), no special characters, and can contain a space, if desired. Once you've picked
-        your Pen Name, you cannot change it. This is how players will find and get to know your work.
+        Excellent. You seem to understand the basics of how to interact with the system. Next, you're going to create a
+        pen name. This must be unique (to the game), no special characters, and can contain a space, if desired. Once
+        you've picked your Pen Name, you cannot change it. This is how players will find and get to know your work.
 
         <div class="field mt-3">
           <label class="label">Pen Name</label>
@@ -23,8 +23,9 @@
     </div>
 
     <footer class="card-footer">
+<!--      todo: how do setup linking on page that you've "continued" already -->
       <a @click="" class="card-footer-item">Continue</a>
-      <a @click="" class="card-footer-item">Previous</a>
+      <a @click="$emit('goWelcome')" class="card-footer-item">Previous</a>
     </footer>
   </div>
 </template>

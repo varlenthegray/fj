@@ -117,7 +117,7 @@
 
       <div class="column">
         <div class="block">
-          <component :is="actionCenter" @log-out="logOut" @get-penname="goPenname" />
+          <component :is="actionCenter" @log-out="logOut" @get-penname="goPenname" @go-welcome="goWelcome" />
         </div>
 
         <div class="block">
@@ -183,6 +183,9 @@ export default {
     },
     goPenname() {
       this.actionCenter = Penname;
+    },
+    goWelcome() {
+      this.actionCenter = Welcome;
     }
   }
 }
