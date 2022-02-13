@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+# Set the path for Python (inside venv)
+export PYTHONPATH="$PYTHONPATH:$PWD/app"
+
 # Let the DB start
 python ./app/backend_pre_start.py
 

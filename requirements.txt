@@ -1,0 +1,10 @@
+fastapi
+sqlalchemy
+pydantic
+passlib
+python-jose
+python-decouple
+alembic
+tenacity
+pydantic[email]
+bcrypt
