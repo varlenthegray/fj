@@ -16,8 +16,8 @@
     </div>
 
     <footer class="card-footer">
-      <a @click="welcomeContinue" class="card-footer-item">Continue</a>
-      <a @click="welcomeLogOut" class="card-footer-item">Logout</a>
+      <a @click="$emit('getPenname')" class="card-footer-item">Continue</a>
+      <a @click="$emit('logOut')" class="card-footer-item">Logout</a>
     </footer>
   </div>
 </template>
@@ -25,14 +25,6 @@
 <script>
 export default {
   name: "Welcome",
-  methods: {
-    welcomeLogOut() {
-      this.$emit('logOut');
-    },
-    welcomeContinue() {
-      this.$emit('getNext');
-    }
-  },
 }
 </script>
 

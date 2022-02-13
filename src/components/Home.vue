@@ -117,7 +117,7 @@
 
       <div class="column">
         <div class="block">
-          <component :is="actionCenter" @log-out="logOut" @get-next="goNext" />
+          <component :is="actionCenter" @log-out="logOut" @get-penname="goPenname" />
         </div>
 
         <div class="block">
@@ -158,15 +158,11 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
-    actionCenter: {
-      // fixme: this isn't loading the data, despite getting it
-      get() {
-        return Welcome
-      },
-      set(goToThis) {
-        this.actionCenter = goToThis
-      }
-    },
+  },
+  data() {
+    return {
+      actionCenter: Welcome
+    }
   },
   created() {
     if(!this.loggedIn) {
@@ -185,9 +181,8 @@ export default {
                 this.$router.push("/");
               })
     },
-    goNext() {
-      console.log("Changing over to Pen Name");
-      this.actionCenter = Penname; // fixme: this isn't loading the data, despite getting it (part 2)
+    goPenname() {
+      this.actionCenter = Penname;
     }
   }
 }
