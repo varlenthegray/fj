@@ -8,3 +8,5 @@ alembic
 tenacity
 pydantic[email]
 bcrypt
+uvicorn
+python-multipart

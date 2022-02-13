@@ -117,7 +117,7 @@
 
       <div class="column">
         <div class="block">
-          <component :is="actionCenter" @log-out="logOut" />
+          <component :is="actionCenter" @log-out="logOut" @get-next="goNext" />
         </div>
 
         <div class="block">
@@ -134,6 +134,7 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserTie, faUserCog } from "@fortawesome/free-solid-svg-icons";
 import Welcome from "./tutorial/Welcome.vue";
+import Penname from "./tutorial/Penname.vue";
 
 library.add(faUserTie, faUserCog);
 
@@ -157,8 +158,14 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
-    actionCenter() {
-      return Welcome
+    actionCenter: {
+      // fixme: this isn't loading the data, despite getting it
+      get() {
+        return Welcome
+      },
+      set(goToThis) {
+        this.actionCenter = goToThis
+      }
     },
   },
   created() {
@@ -167,7 +174,7 @@ export default {
     }
   },
   components: {
-    Welcome
+    Welcome, Penname
   },
   methods: {
     logOut() {
@@ -178,6 +185,10 @@ export default {
                 this.$router.push("/");
               })
     },
+    goNext() {
+      console.log("Changing over to Pen Name");
+      this.actionCenter = Penname; // fixme: this isn't loading the data, despite getting it (part 2)
+    }
   }
 }
 </script>
