@@ -3,7 +3,7 @@
     <header class="card-header">
       <p class="card-header-title">Pick your Pen Name</p>
       <div class="card-header-icon">
-        <n-avatar round size="small"><font-awesome-icon icon="user-tie" /></n-avatar>
+        <n-avatar round="true" size="small"><font-awesome-icon icon="user-tie" /></n-avatar>
       </div>
     </header>
 

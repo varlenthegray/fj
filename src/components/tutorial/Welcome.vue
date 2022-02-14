@@ -16,7 +16,6 @@
 
     <footer class="card-footer">
       <a @click="$emit('getPenname')" class="card-footer-item">Continue</a>
-      <a @click="$emit('logOut')" class="card-footer-item">Logout</a>
     </footer>
   </div>
 </template>

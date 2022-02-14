@@ -1,11 +1,19 @@
 <template>
-  <n-message-provider>
-    <router-view />
-  </n-message-provider>
+  <Header />
+
+  <div class="container mt-5">
+    <n-message-provider>
+      <router-view />
+    </n-message-provider>
+  </div>
 </template>
 
 <script>
-/* intentionally left blank */
+import Header from "./components/Header.vue";
+
+export default {
+  components: { Header },
+}
 </script>
 
 <style>
