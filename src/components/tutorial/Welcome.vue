@@ -10,8 +10,7 @@
     <div class="card-content">
       <div class="content">
         Welcome! You've decided to give writing a shot eh? Well, here at Faded Journals our job is to introduce you
-        to the subject (pun intended). First up is an introduction on how to interact with the system. Click "Continue"
-        to progress to the next step.
+        to the subject (pun intended). First up, how do you do things? Click "Continue" to find out!
       </div>
     </div>
 
