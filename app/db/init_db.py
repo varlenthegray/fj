@@ -22,18 +22,19 @@ def init_db(db: Session) -> None:
             user_in = schemas.AuthorCreateAdmin(
                 username=settings.FIRST_SUPERUSER,
                 password=settings.FIRST_SUPERUSER_PW,
-                email_address=settings.FIRST_SUPERUSER_EMAIL
+                email_address=settings.FIRST_SUPERUSER_EMAIL,
+                pen_name=settings.FIRST_SUPERUSER_PEN_NAME
             )
 
             user = crud.author.create(db, obj_in=user_in)  # noqa: F841
         else:
             logger.warning(
-                "Skipping creating superuser. User with email "
+                "Skipping creating superuser. User with username "
                 f"{settings.FIRST_SUPERUSER} already exists. "
             )
     else:
         logger.warning(
             "Skipping creating superuser.  FIRST_SUPERUSER needs to be "
-            "provided as an env variable. "
-            "e.g.  FIRST_SUPERUSER=admin@api.coursemaker.io"
+            "provided as a config variable. "
+            "e.g.  FIRST_SUPERUSER=jsmith"
         )

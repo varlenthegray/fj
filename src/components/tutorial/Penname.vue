@@ -24,7 +24,6 @@
     </div>
 
     <footer class="card-footer">
-      <!-- todo: how to setup linking on page that you've "continued" already -->
       <a @click="" class="card-footer-item">Continue</a>
       <a @click="$emit('goWelcome')" class="card-footer-item">Previous</a>
     </footer>

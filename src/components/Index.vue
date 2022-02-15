@@ -7,12 +7,12 @@
     </div>
   </section>
 
-  <div class="columns mt-5">
+  <div class="columns mt-3">
     <div class="column">
       <div class="card">
         <div class="card-content">
-          <p class="title">“<n-skeleton text="true" :repeat="2" style="width: 95%;" /> <n-skeleton text="true" style="width: 60%;" />”</p>
-          <p class="subtitle"><n-skeleton text="true" style="width: 40%;" /></p>
+          <p class="title">“<n-skeleton text :repeat="2" style="width: 95%;" /> <n-skeleton text style="width: 60%;" />”</p>
+          <p class="subtitle"><n-skeleton text style="width: 40%;" /></p>
         </div>
 
         <footer class="card-footer">
@@ -25,8 +25,8 @@
     <div class="column">
       <div class="card">
         <div class="card-content">
-          <p class="title">“<n-skeleton text="true" :repeat="2" style="width: 95%;" /> <n-skeleton text="true" style="width: 60%;" />”</p>
-          <p class="subtitle"><n-skeleton text="true" style="width: 40%;" /></p>
+          <p class="title">“<n-skeleton text :repeat="2" style="width: 95%;" /> <n-skeleton text style="width: 60%;" />”</p>
+          <p class="subtitle"><n-skeleton text style="width: 40%;" /></p>
         </div>
 
         <footer class="card-footer">
@@ -39,8 +39,8 @@
     <div class="column">
       <div class="card">
         <div class="card-content">
-          <p class="title">“<n-skeleton text="true" :repeat="2" style="width: 95%;" /> <n-skeleton text="true" style="width: 60%;" />”</p>
-          <p class="subtitle"><n-skeleton text="true" style="width: 40%;" /></p>
+          <p class="title">“<n-skeleton text :repeat="2" style="width: 95%;" /> <n-skeleton text style="width: 60%;" />”</p>
+          <p class="subtitle"><n-skeleton text style="width: 40%;" /></p>
         </div>
 
         <footer class="card-footer">

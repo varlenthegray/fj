@@ -11,6 +11,16 @@
     </div>
 
     <div class="field">
+      <label class="label">Pen Name</label>
+      <div class="control has-icons-left">
+        <Field name="pen_name" class="input" placeholder="e.g. Alex Smith" />
+        <span class="icon is-small is-left"><font-awesome-icon icon="pen-fancy" /></span>
+      </div>
+
+      <ErrorMessage name="pen_name" class="help is-danger" />
+    </div>
+
+    <div class="field">
       <label class="label">Email Address</label>
       <div class="control has-icons-left">
         <Field name="email_address" class="input" placeholder="Email Address" />
@@ -53,11 +63,11 @@
 <script>
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUser, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faEnvelope, faLock, faPenFancy } from "@fortawesome/free-solid-svg-icons";
 import { useMessage } from 'naive-ui';
 import * as yup from 'yup';
 
-library.add(faUser, faEnvelope, faLock);
+library.add(faUser, faEnvelope, faLock, faPenFancy);
 
 export default {
   components: { Field, Form, ErrorMessage },
@@ -69,6 +79,9 @@ export default {
       username: yup.string()
           .required('Please enter a username.')
           .min(3, 'Username must be at least 3 characters long'),
+      pen_name: yup.string()
+          .required('Please enter a pen name.')
+          .min(5, 'Pen name must be at least 5 characters long.'),
       password: yup.string()
           .required('Please enter a password.')
           .min(3, 'Password must be at least 3 characters long.'),
@@ -83,6 +96,7 @@ export default {
     return { schema }
   },
   methods: {
+    // fixme: pen_name is not saving in the database
     handleRegister(user) {
       this.$store.dispatch("auth/register", user)
           .then(

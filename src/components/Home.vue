@@ -1,5 +1,4 @@
 <template>
-<!-- todo: i've totally messed this up, the entire site is a blunder... you shouldn't have to log in to read, fix it -->
   <div class="columns">
     <Actions />
 
@@ -18,7 +17,6 @@
 </template>
 
 <script>
-// fixme: i'm doing this the wrong way, i need to use app as the "holder of things" and then leverage vue router to change content
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserTie, faUserCog } from "@fortawesome/free-solid-svg-icons";
 import Welcome from "./tutorial/Welcome.vue";

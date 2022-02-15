@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     FIRST_SUPERUSER: str = "bbeach"
     FIRST_SUPERUSER_PW: str = "Yellow"  # todo: remove this and pull it from a .env file or something
     FIRST_SUPERUSER_EMAIL: EmailStr = "bbeach@innovated.tech"
+    FIRST_SUPERUSER_PEN_NAME: str = "Ben Beach"
 
     class Config:
         case_sensitive = True

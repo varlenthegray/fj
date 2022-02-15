@@ -38,12 +38,18 @@ def read_users_me(current_user: Author = Depends(deps.get_current_user)):
 def create_user_signup(*, db: Session = Depends(deps.get_db), user_in: schemas.author.AuthorCreate) -> Any:
     """ Create new user without the need to be logged in. """
 
-    print(user_in)
-
     user = db.query(Author).filter(Author.username == user_in.username).first()
+    email = db.query(Author).filter(Author.email_address == user_in.email_address).first()
+    pen_name = db.query(Author).filter(Author.pen_name == user_in.pen_name).first()
 
     if user:
-        raise HTTPException(status_code=400, detail="A user with this username already exists in the system")
+        raise HTTPException(status_code=400, detail="A user with this username already exists")
+
+    if email:
+        raise HTTPException(status_code=400, detail="That email address has already been registered")
+
+    if pen_name:
+        raise HTTPException(status_code=400, detail="Pen name already exists, please try a different one")
 
     user = crud.author.create(db=db, obj_in=user_in)
 

@@ -9,19 +9,17 @@ class AuthorBase(BaseModel):
 
 class AuthorCreate(AuthorBase):
     email_address: EmailStr
+    pen_name: str
     password: str
 
 
-class AuthorCreateModerator(AuthorBase):
+class AuthorCreateModerator(AuthorCreate):
     moderator: bool = True
-    email_address: str
-    password: str
 
 
-class AuthorCreateAdmin(AuthorBase):
+class AuthorCreateAdmin(AuthorCreate):
     admin: bool = True
-    email_address: str
-    password: str
+    moderator: bool = True
 
 
 class AuthorUpdate(AuthorBase):

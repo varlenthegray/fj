@@ -35,7 +35,7 @@
           <div class="dropdown is-right is-hoverable">
             <div class="dropdown-trigger">
               <button class="button is-white" aria-haspopup="true" aria-controls="dropdown-menu">
-                <span class="mx-2"><strong>{{ username }}</strong></span>
+                <span class="mx-2"><strong>{{ getUsername }}</strong></span>
                 <n-avatar round="true" size="small" :style="{color: 'rgb(0,0,0)', backgroundColor: 'rgb(173,208,173)'}">
                   <font-awesome-icon icon="user" />
                 </n-avatar>
@@ -66,9 +66,19 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+    getUsername() {
+      const author = this.$store.state.auth.user['author'];
+
+      if(author['pen_name']) {
+        return author['pen_name'];
+      } else {
+        return author['username'];
+      }
+    }
   },
   data() {
     return {
+      // fixme: this doesn't always get the username on the first login, change to store
       username: UserServices.getUsername()
     }
   },
