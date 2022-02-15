@@ -9,7 +9,7 @@ class UserService {
     let loginKey = localStorage.getItem('login');
 
     if(loginKey) {
-      const author = JSON.parse(localStorage.getItem('login')).author;
+      const author = JSON.parse(loginKey).author;
 
       if(author && author.pen_name) {
         return author.pen_name;

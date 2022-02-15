@@ -14,7 +14,7 @@
 
     <div class="navbar-menu">
       <div class="navbar-start">
-        <router-link to="" class="navbar-item">Home</router-link>
+        <router-link to="/" class="navbar-item">Home</router-link>
         <router-link to="" class="navbar-item">Random Story</router-link>
 
         <div class="navbar-item has-dropdown is-hoverable">
@@ -30,16 +30,7 @@
         </div>
       </div>
 
-      <div class="navbar-end" v-if="!loggedIn">
-        <div class="navbar-item">
-          <div class="buttons">
-            <router-link to="/register" class="button is-primary">Sign up</router-link>
-            <router-link to="/login" class="button is-light">Log in</router-link>
-          </div>
-        </div>
-      </div>
-
-      <div class="navbar-end" v-else>
+      <div class="navbar-end" v-if="loggedIn">
         <div class="navbar-item">
           <div class="dropdown is-right is-hoverable">
             <div class="dropdown-trigger">
