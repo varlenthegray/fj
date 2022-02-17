@@ -96,7 +96,6 @@ export default {
     return { schema }
   },
   methods: {
-    // fixme: pen_name is not saving in the database
     handleRegister(user) {
       this.$store.dispatch("auth/register", user)
           .then(

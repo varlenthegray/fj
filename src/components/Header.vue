@@ -58,8 +58,6 @@
 </template>
 
 <script>
-import UserServices from "../services/user.services";
-
 export default {
   name: "Header",
   computed: {
@@ -67,19 +65,9 @@ export default {
       return this.$store.state.auth.status.loggedIn;
     },
     getUsername() {
-      const author = this.$store.state.auth.user['author'];
-
-      if(author['pen_name']) {
-        return author['pen_name'];
-      } else {
-        return author['username'];
+      if(this.loggedIn) {
+        return this.$store.state.auth.user['author'].pen_name;
       }
-    }
-  },
-  data() {
-    return {
-      // fixme: this doesn't always get the username on the first login, change to store
-      username: UserServices.getUsername()
     }
   },
 }

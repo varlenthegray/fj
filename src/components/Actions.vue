@@ -1,5 +1,8 @@
 <template>
   <div class="box">
+    <n-menu :options="menuOptions" />
+
+
     <aside class="menu">
       <p class="menu-label">Author Actions</p>
       <ul class="menu-list">
