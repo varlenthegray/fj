@@ -36,7 +36,7 @@
             <div class="dropdown-trigger">
               <button class="button is-white" aria-haspopup="true" aria-controls="dropdown-menu">
                 <span class="mx-2"><strong>{{ getUsername }}</strong></span>
-                <n-avatar round="true" size="small" :style="{color: 'rgb(0,0,0)', backgroundColor: 'rgb(173,208,173)'}">
+                <n-avatar round size="small" :style="{color: 'rgb(0,0,0)', backgroundColor: 'rgb(173,208,173)'}">
                   <font-awesome-icon icon="user" />
                 </n-avatar>
               </button>
