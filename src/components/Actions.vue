@@ -17,6 +17,9 @@ import MenuBookTwotone from '@vicons/material/MenuBookTwotone';
 import LibraryBooksOutlined from '@vicons/material/LibraryBooksOutlined';
 import CollectionsBookmarkTwotone from '@vicons/material/CollectionsBookmarkTwotone';
 import { WritingSign, Books, ChartArrowsVertical } from '@vicons/tabler';
+import { Blog, BoxSmall, BoxMedium, BoxLarge } from '@vicons/carbon';
+import { Shower, Bath, Signature, Book } from '@vicons/fa';
+import { IosLaptop } from '@vicons/ionicons4';
 import {
   Book24Filled, DocumentOnePage24Filled, DrawImage24Filled, FoodPizza24Filled,
   ReadingModeMobile24Filled, Bed24Filled, BookCompass24Filled, Box24Filled,
@@ -26,9 +29,6 @@ import {
   BookTheta24Regular, BookAdd24Regular, NotebookAdd24Regular, BookmarkMultiple24Regular,
   NotebookLightning24Regular, BookDatabase24Regular
 } from '@vicons/fluent';
-import { Blog, BoxSmall, BoxMedium, BoxLarge } from '@vicons/carbon';
-import { Shower, Bath, Signature, Book } from '@vicons/fa';
-import { IosLaptop } from '@vicons/ionicons4';
 
 function renderIcon (icon) {
   return () => h(NIcon, null, { default: () => h(icon) });
