@@ -1,11 +1,12 @@
 <template>
   <div class="box">
-    <n-menu :options="menuOptions" :default-expanded-keys="defaultExpandedKeys" :indent="16" @update:value="megaMenu" />
+    <n-menu :options="menuOptions" :default-expanded-keys="defaultExpandedKeys" :indent="16" />
   </div>
 </template>
 
 <script>
 import { h } from 'vue';
+import { RouterLink } from 'vue-router'
 import { NIcon } from 'naive-ui';
 import VideogameAssetFilled from '@vicons/material/VideogameAssetFilled';
 import LaptopMacTwotone from '@vicons/material/LaptopMacTwotone';
@@ -32,6 +33,10 @@ import {
 
 function renderIcon (icon) {
   return () => h(NIcon, null, { default: () => h(icon) });
+}
+
+function renderLabel(to, labelName) {
+  return () => h(RouterLink, {to: to}, { default: () => labelName })
 }
 
 const menuOptions = [
@@ -136,8 +141,8 @@ const menuOptions = [
         key: 'writing-create',
         icon: renderIcon(MenuBookOutlined),
         children: [
-          {label: 'Chapter', key: 'create-chapter', icon: renderIcon(NotebookAdd24Regular)},
-          {label: 'Comic', key: 'create-comic', icon: renderIcon(MenuBookTwotone)},
+          {label: renderLabel('/writing/create', 'Chapter'), key: 'create-chapter', icon: renderIcon(NotebookAdd24Regular)},
+          {label: renderLabel('/writing/create/comic', 'Comic'), key: 'create-comic', icon: renderIcon(MenuBookTwotone)},
           {label: 'Scrap', key: 'create-scrap', icon: renderIcon(LibraryBooksOutlined)},
           {label: 'Book', key: 'create-book', icon: renderIcon(BookAdd24Regular)},
         ]
@@ -162,11 +167,8 @@ export default {
     return {
       menuOptions,
       defaultExpandedKeys: ['game', 'writings'],
-      megaMenu(key, item) {
-        console.log('[onUpdate:value]: ' + JSON.stringify(key))
-      }
     }
-  }
+  },
 }
 </script>
 

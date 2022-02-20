@@ -2,7 +2,7 @@
   <nav class="navbar is-fixed-top mx-5" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <router-link to="/" class="navbar-item"><!--suppress HtmlUnknownTarget -->
-        <img src="icon.png" alt="Logo" width="28" height="28"> <strong>Faded Journals</strong>
+        <img src="/icon.png" alt="Logo" width="28" height="28"> <strong>Faded Journals</strong>
       </router-link>
 
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
