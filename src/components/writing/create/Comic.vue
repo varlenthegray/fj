@@ -8,6 +8,23 @@
     </ul>
   </nav>
 
+  <div class="field">
+    <label class="label">Comic Strip Name</label>
+    <div class="control"><input class="input" type="text" placeholder="e.g. Attack of the Furballs"></div>
+  </div>
+
+  <div class="field">
+    <label class="label">Tags</label>
+    <n-dynamic-tags v-model:value="tags" />
+  </div>
+
+  <div class="block">
+    <label class="label">Series</label>
+    <div class="control">
+      <n-select v-model:value="selectedValue" filterable placeholder="Please select a series" :options="options" />
+    </div>
+  </div>
+
   <n-upload action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f">
     <n-upload-dragger>
       <div class="mb-3">
@@ -23,11 +40,21 @@
 
 <script>
 import { ArchiveOutline as ArchiveIcon } from '@vicons/ionicons5'
+import {ref} from "vue";
 
 export default {
   name: "Comic",
   components: {
     ArchiveIcon
+  },
+  setup() {
+    return {
+      tags: ref(["Comic"]),
+      selectedValue: ref(null),
+      options: [
+        {label: "My fully expired milk", value: "series1"},
+      ]
+    }
   }
 }
 </script>

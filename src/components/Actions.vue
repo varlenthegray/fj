@@ -1,5 +1,6 @@
 <template>
   <div class="box">
+    <!--    fixme: need to update the value of this when you navigate outside of menu -->
     <n-menu :options="menuOptions" :default-expanded-keys="defaultExpandedKeys" :indent="16" />
   </div>
 </template>
@@ -143,8 +144,8 @@ const menuOptions = [
         children: [
           {label: renderLabel('/writing/create', 'Chapter'), key: 'create-chapter', icon: renderIcon(NotebookAdd24Regular)},
           {label: renderLabel('/writing/create/comic', 'Comic'), key: 'create-comic', icon: renderIcon(MenuBookTwotone)},
-          {label: 'Scrap', key: 'create-scrap', icon: renderIcon(LibraryBooksOutlined)},
-          {label: 'Book', key: 'create-book', icon: renderIcon(BookAdd24Regular)},
+          {label: renderLabel('/writing/create/scrap', 'Scrap'), key: 'create-scrap', icon: renderIcon(LibraryBooksOutlined)},
+          {label: renderLabel('/writing/create/book', 'Book'), key: 'create-book', icon: renderIcon(BookAdd24Regular)},
         ]
       },
       {
