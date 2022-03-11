@@ -26,7 +26,7 @@
             <div class="box">
               <h2 class="title is-2">What we do</h2>
               <p>Want to write but don't know how to get started? Want to play a game that's centered around the idea of
-              writing? Here at Faded Journals, our goal is to gamify writing to make it more fun and interactive.</p>
+                writing? Here at Faded Journals, our goal is to gamify writing to make it more fun and interactive.</p>
             </div>
           </div>
 
@@ -34,11 +34,14 @@
         </div>
       </div>
     </div>
+
+    <Footer />
   </n-message-provider>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser, faLock, faEnvelope, faAngleRight } from "@fortawesome/free-solid-svg-icons";
@@ -49,7 +52,7 @@ import Register from "./components/user/Register.vue";
 library.add(faUser, faEnvelope, faLock, faAngleRight);
 
 export default {
-  components: { Header, Actions, Login, Register, Field, Form, ErrorMessage },
+  components: { Header, Actions, Login, Register, Field, Form, ErrorMessage, Footer },
   data() {
     return {
       isRegistration: false,

@@ -8,6 +8,7 @@ import Chapter from "./components/writing/create/Chapter.vue";
 import Comic from "./components/writing/create/Comic.vue";
 import Scrap from "./components/writing/create/Scrap.vue";
 import Book from "./components/writing/create/Book.vue";
+import Character from "./components/writing/create/Character.vue";
 
 const history = createWebHistory();
 
@@ -21,6 +22,7 @@ const routes = [
   { path: "/writing/create/comic", component: Comic },
   { path: "/writing/create/scrap", component: Scrap },
   { path: "/writing/create/book", component: Book },
+  { path: "/writing/create/character", component: Character },
 ];
 
 const router = createRouter({ history, routes });

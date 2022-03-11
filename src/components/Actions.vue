@@ -17,10 +17,9 @@ import SignpostTwotone from '@vicons/material/SignpostTwotone';
 import MenuBookOutlined from '@vicons/material/MenuBookOutlined';
 import MenuBookTwotone from '@vicons/material/MenuBookTwotone';
 import LibraryBooksOutlined from '@vicons/material/LibraryBooksOutlined';
-import CollectionsBookmarkTwotone from '@vicons/material/CollectionsBookmarkTwotone';
 import { WritingSign, Books, ChartArrowsVertical } from '@vicons/tabler';
-import { Blog, BoxSmall, BoxMedium, BoxLarge } from '@vicons/carbon';
-import { Shower, Bath, Signature, Book } from '@vicons/fa';
+import { Blog, BoxSmall, BoxMedium, BoxLarge, UserIdentification } from '@vicons/carbon';
+import { Shower, Bath, Signature } from '@vicons/fa';
 import { IosLaptop } from '@vicons/ionicons4';
 import {
   Book24Filled, DocumentOnePage24Filled, DrawImage24Filled, FoodPizza24Filled,
@@ -28,8 +27,9 @@ import {
   Money24Filled, CalligraphyPen24Filled, Keyboard12324Filled, DesktopToolbox24Regular,
   DesktopMac24Regular, BuildingRetailMoney24Filled, MoneyCalculator24Filled, Globe24Regular,
   BookOpenGlobe24Filled, BookContacts24Regular, BookPulse24Regular, BookStar24Regular,
-  BookTheta24Regular, BookAdd24Regular, NotebookAdd24Regular, BookmarkMultiple24Regular,
-  NotebookLightning24Regular, BookDatabase24Regular
+  BookTheta24Regular, NotebookAdd24Regular, Notebook24Regular, BookAdd24Regular,
+  NotebookLightning24Regular, BookDatabase24Regular, NotepadPerson24Regular,
+  DocumentSettings20Regular, Notebook24Filled
 } from '@vicons/fluent';
 
 function renderIcon (icon) {
@@ -135,17 +135,18 @@ const menuOptions = [
   {
     label: 'Writings',
     key: 'writings',
-    icon: renderIcon(Book),
+    icon: renderIcon(Notebook24Filled),
     children: [
       {
         label: 'Create',
         key: 'writing-create',
         icon: renderIcon(MenuBookOutlined),
         children: [
-          {label: renderLabel('/writing/create', 'Chapter'), key: 'create-chapter', icon: renderIcon(NotebookAdd24Regular)},
+          {label: renderLabel('/writing/create', 'Chapter'), key: 'create-chapter', icon: renderIcon(BookAdd24Regular)},
           {label: renderLabel('/writing/create/comic', 'Comic'), key: 'create-comic', icon: renderIcon(MenuBookTwotone)},
           {label: renderLabel('/writing/create/scrap', 'Scrap'), key: 'create-scrap', icon: renderIcon(LibraryBooksOutlined)},
-          {label: renderLabel('/writing/create/book', 'Book'), key: 'create-book', icon: renderIcon(BookAdd24Regular)},
+          {label: renderLabel('/writing/create/book', 'Book'), key: 'create-book', icon: renderIcon(NotebookAdd24Regular)},
+          {label: renderLabel('/writing/create/character', 'Character'), key: 'create-character', icon: renderIcon(NotepadPerson24Regular)},
         ]
       },
       {
@@ -153,9 +154,10 @@ const menuOptions = [
         key: 'writing-manage',
         icon: renderIcon(NotebookLightning24Regular),
         children: [
-          {label: 'Books', key: 'manage-books', icon: renderIcon(BookmarkMultiple24Regular)},
+          {label: 'Chapter/Comic/Scrap', key: 'manage-chapter-comic-scrap', icon: renderIcon(DocumentSettings20Regular)},
+          {label: 'Books', key: 'manage-books', icon: renderIcon(Notebook24Regular)},
+          {label: 'Characters', key: 'manage-characters', icon: renderIcon(UserIdentification)},
           {label: 'Permissions', key: 'manage-permissions', icon: renderIcon(BookDatabase24Regular)},
-          {label: 'Collection', key: 'manage-collection', icon: renderIcon(CollectionsBookmarkTwotone)},
         ]
       },
     ]
